@@ -4,11 +4,10 @@
 [![Downloads][downloads-image]][npm-url]
 [![Twitter Follow][twitter-image]][twitter-url]
 
-[npm-image]:http://img.shields.io/npm/v/cordova-plugin-x-socialsharing.svg
-[npm-url]:https://npmjs.org/package/cordova-plugin-x-socialsharing
-[downloads-image]:http://img.shields.io/npm/dm/cordova-plugin-x-socialsharing.svg
-[twitter-image]:https://img.shields.io/twitter/follow/eddyverbruggen.svg?style=social&label=Follow%20me
-[twitter-url]:https://twitter.com/eddyverbruggen
+[npm-image]:http://img.shields.io/npm/v/cordova-plugin-vsms-socialsharing.svg
+[npm-url]:https://npmjs.org/package/cordova-plugin-vsms-socialsharing
+[downloads-image]:http://img.shields.io/npm/dm/cordova-plugin-vsms-socialsharing.svg
+[twitter-url]:https://twitter.com/presttec
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=eddyverbruggen%40gmail%2ecom&lc=US&item_name=cordova%2dplugin%2dsocialsharing&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted)
 Every now and then kind folks ask me how they can give me all their money. So if you want to contribute to my pension fund, then please go ahead :)
@@ -40,27 +39,27 @@ This plugin allows you to use the native sharing window of your mobile device.
 ## 2. Screenshots
 iOS 7 (iPhone)
 
-![ScreenShot](https://raw.githubusercontent.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-ios7-share.png)
+![ScreenShot](https://raw.githubusercontent.com/presttec/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-ios7-share.png)
 
 Sharing options are based on what has been setup in the device settings
 
-![ScreenShot](https://raw.githubusercontent.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshots-ios7-shareconfig.png)
+![ScreenShot](https://raw.githubusercontent.com/presttec/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshots-ios7-shareconfig.png)
 
 iOS 7 (iPad) - a popup like this requires [a little more effort](#4c-share-popover-on-ipad)
 
-![ScreenShot](https://raw.githubusercontent.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-ios7-ipad-share.png)
+![ScreenShot](https://raw.githubusercontent.com/presttec/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-ios7-ipad-share.png)
 
 iOS 6 (iPhone)
 
-![ScreenShot](https://raw.githubusercontent.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-ios6-share.png)
+![ScreenShot](https://raw.githubusercontent.com/presttec/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-ios6-share.png)
 
 Android
 
-![ScreenShot](https://raw.githubusercontent.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-android-share.png)
+![ScreenShot](https://raw.githubusercontent.com/presttec/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-android-share.png)
 
 Windows Phone 8
 
-![ScreenShot](https://raw.githubusercontent.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-wp8-share.jpg)
+![ScreenShot](https://raw.githubusercontent.com/presttec/SocialSharing-PhoneGap-Plugin/master/screenshots/screenshot-wp8-share.jpg)
 
 #### Alternative ShareSheet (iOS only, using the [Cordova ActionSheet plugin](https://github.com/EddyVerbruggen/cordova-plugin-actionsheet))
 
@@ -72,12 +71,12 @@ Windows Phone 8
 SocialSharing is compatible with [Cordova Plugman](https://github.com/apache/cordova-plugman), compatible with [PhoneGap 3.0 CLI](http://docs.phonegap.com/en/3.0.0/guide_cli_index.md.html#The%20Command-line%20Interface_add_features), here's how it works with the CLI:
 
 ```
-$ phonegap local plugin add https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git
+$ phonegap local plugin add https://github.com/presttec/SocialSharing-PhoneGap-Plugin.git
 ```
 
 or with Cordova CLI, from npm:
 ```
-$ cordova plugin add cordova-plugin-x-socialsharing
+$ cordova plugin add cordova-plugin-vsms-socialsharing
 $ cordova prepare
 ```
 
@@ -128,7 +127,7 @@ Window Phone: Copy `SocialSharing.cs` to `platforms/wp8/Plugins/nl.x-services.pl
 ### PhoneGap Build
 Just add the following xml to your `config.xml` to always use the latest version of this plugin (which is published to plugins.cordova.io these days):
 ```xml
-<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+<gap:plugin name="cordova-plugin-vsms-socialsharing" source="npm" />
 ```
 or to use an older version, hosted at phonegap build:
 ```xml
@@ -147,7 +146,7 @@ However, what exactly gets shared, depends on the application the user chooses t
 - Twitter: message, image (other filetypes are not supported), link (which is automatically shortened if the Twitter client deems it necessary).
 - Google+ / Hangouts (Android only): message, subject, link
 - Flickr: message, image (an image is required for this option to show up).
-- Facebook Android: sharing a message is not possible. You can share either a link or an image (not both), but a description can not be prefilled. See [this Facebook issue which they won't solve](https://developers.facebook.com/x/bugs/332619626816423/). As an alternative you can use `shareViaFacebookWithPasteMessageHint` since plugin version 4.3.4. See below for details. Also note that sharing a URL on a non standard domain (like .fail) [may not work on Android](https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/issues/253). Make sure you test this. You can use a [link shortener](https://goo.gl) to workaround this issue.
+- Facebook Android: sharing a message is not possible. You can share either a link or an image (not both), but a description can not be prefilled. See [this Facebook issue which they won't solve](https://developers.facebook.com/x/bugs/332619626816423/). As an alternative you can use `shareViaFacebookWithPasteMessageHint` since plugin version 4.3.4. See below for details. Also note that sharing a URL on a non standard domain (like .fail) [may not work on Android](https://github.com/presttec/SocialSharing-PhoneGap-Plugin/issues/253). Make sure you test this. You can use a [link shortener](https://goo.gl) to workaround this issue.
 - Facebook iOS: message, image (other filetypes are not supported), link. Beware that since a Fb update in April 2015 sharing a prefilled message is no longer possible when the Fb app is installed (like Android), see #344. Alternative: use `shareViaFacebookWithPasteMessageHint`.
 
 ### Using the share sheet
