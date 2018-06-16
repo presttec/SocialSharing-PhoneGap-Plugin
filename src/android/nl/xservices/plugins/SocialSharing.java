@@ -579,6 +579,7 @@ public class SocialSharing extends CordovaPlugin {
           // update: didn't help (doesn't seem to hurt either though)
           intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
           intent.setPackage("com.whatsapp");
+		  
 
           // as an experiment for #300 we're explicitly running it on the ui thread here
           cordova.getActivity().runOnUiThread(new Runnable() {
